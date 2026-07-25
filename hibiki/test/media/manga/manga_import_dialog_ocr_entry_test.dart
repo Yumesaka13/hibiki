@@ -1,4 +1,4 @@
-/// 漫画 P3：导入书对话框「OCR 导入漫画」入口 gating。
+/// 漫画导入对话框「OCR 导入漫画」入口 gating（自书籍导入对话框迁入）。
 ///
 /// - 桌面：恒显示（内置 OCR / 外部 mokuro CLI 都是桌面工具）。
 /// - 移动端（ocrEntryDesktopOverride=false 模拟）：默认隐藏；异步探测到具备漫画
@@ -11,9 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hibiki/i18n/strings.g.dart';
-import 'package:hibiki/src/media/audiobook/book_import_dialog.dart';
+import 'package:hibiki/src/media/manga/manga_import_dialog.dart';
 import 'package:hibiki/src/sync/interconnect_manga_ocr_client.dart';
-import 'package:hibiki_audio/hibiki_audio.dart';
 import 'package:hibiki_core/hibiki_core.dart';
 
 class _FakeRemoteRunner implements MangaOcrRemoteRunner {
@@ -63,9 +62,7 @@ void main() {
         child: TranslationProvider(
           child: MaterialApp(
             home: Scaffold(
-              body: BookImportDialog(
-                repo: SrtBookRepository(db),
-                audiobookRepo: AudiobookRepository(db),
+              body: MangaImportDialog(
                 db: db,
                 mangaOcrRemoteRunner: runner,
                 ocrEntryDesktopOverride: desktop,

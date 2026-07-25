@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 17
-/// Strings: 41633 (2449 per locale)
+/// Strings: 41650 (2450 per locale)
 ///
-/// Built on 2026-07-24 at 09:40 UTC
+/// Built on 2026-07-25 at 06:44 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -3261,6 +3261,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
   String get manga_cloud_ocr_failed => 'Cloud recognition failed';
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -8817,6 +8818,8 @@ class _StringsAr extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -14446,6 +14449,8 @@ class _StringsDe extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -20091,6 +20096,8 @@ class _StringsEs extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -25747,6 +25754,8 @@ class _StringsFr extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -31330,6 +31339,8 @@ class _StringsId extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -36961,6 +36972,8 @@ class _StringsIt extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -42397,6 +42410,8 @@ class _StringsJa extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -47836,6 +47851,8 @@ class _StringsKo extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -53445,6 +53462,8 @@ class _StringsNl extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -59069,6 +59088,8 @@ class _StringsPtBr extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -64676,6 +64697,8 @@ class _StringsRu extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -70228,6 +70251,8 @@ class _StringsTh extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -75812,6 +75837,8 @@ class _StringsTr extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -81383,6 +81410,8 @@ class _StringsVi extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 // Path: <root>
@@ -86566,6 +86595,8 @@ class _StringsZhCn extends _StringsEn {
   String get manga_cloud_ocr_failed => '云端识别失败';
   @override
   String get manga_ocr_mobile_note => '移动端下载的模型用于漫画阅读页的框选识别。';
+  @override
+  String get nav_manga => '漫画';
 }
 
 // Path: <root>
@@ -91920,6 +91951,8 @@ class _StringsZhHk extends _StringsEn {
   @override
   String get manga_ocr_mobile_note =>
       'On mobile, the recognition model powers box scan in the manga reader.';
+  @override
+  String get nav_manga => 'Manga';
 }
 
 /// Flat map(s) containing all translations.
@@ -96924,6 +96957,8 @@ extension on _StringsEn {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -101926,6 +101961,8 @@ extension on _StringsAr {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -106949,6 +106986,8 @@ extension on _StringsDe {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -111971,6 +112010,8 @@ extension on _StringsEs {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -116999,6 +117040,8 @@ extension on _StringsFr {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -122009,6 +122052,8 @@ extension on _StringsId {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -127034,6 +127079,8 @@ extension on _StringsIt {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -132021,6 +132068,8 @@ extension on _StringsJa {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -137012,6 +137061,8 @@ extension on _StringsKo {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -142030,6 +142081,8 @@ extension on _StringsNl {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -147045,6 +147098,8 @@ extension on _StringsPtBr {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -152065,6 +152120,8 @@ extension on _StringsRu {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -157069,6 +157126,8 @@ extension on _StringsTh {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -162082,6 +162141,8 @@ extension on _StringsTr {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -167090,6 +167151,8 @@ extension on _StringsVi {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
@@ -172059,6 +172122,8 @@ extension on _StringsZhCn {
         return '云端识别失败';
       case 'manga_ocr_mobile_note':
         return '移动端下载的模型用于漫画阅读页的框选识别。';
+      case 'nav_manga':
+        return '漫画';
       default:
         return null;
     }
@@ -177041,6 +177106,8 @@ extension on _StringsZhHk {
         return 'Cloud recognition failed';
       case 'manga_ocr_mobile_note':
         return 'On mobile, the recognition model powers box scan in the manga reader.';
+      case 'nav_manga':
+        return 'Manga';
       default:
         return null;
     }
