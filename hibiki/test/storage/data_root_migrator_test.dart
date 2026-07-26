@@ -598,7 +598,7 @@ void main() {
       }
     });
 
-    test('BUG-1111：目标是共享根内的非白名单子目录（Documents\\Hibiki）→ 允许并搬成', () async {
+    test('BUG-1114：目标是共享根内的非白名单子目录（Documents\\Hibiki）→ 允许并搬成', () async {
       // 老安装唯一自然的整理路径：把散落在共享 Documents 根下的 Hibiki 目录收进
       // `Documents\Hibiki`。旧实现按「新根位于旧根内部」一律拒绝，用户无路可走。
       // 白名单搬移只动白名单顶层项，`Hibiki` 不在白名单里 → 全程是旁观者。
@@ -652,7 +652,7 @@ void main() {
       }
     });
 
-    test('BUG-1111：白名单项本身当目标仍被拒（会被搬走 → 目标边搬边消失）', () async {
+    test('BUG-1114：白名单项本身当目标仍被拒（会被搬走 → 目标边搬边消失）', () async {
       await seedDb();
       await expectLater(
         const DataRootMigrator().migrate(DataRootMigrationRequest(
@@ -674,7 +674,7 @@ void main() {
           isTrue);
     });
 
-    test('BUG-1111：专属根（整树语义）下嵌套目标仍被拒——整树搬移会把目标一起搬走', () async {
+    test('BUG-1114：专属根（整树语义）下嵌套目标仍被拒——整树搬移会把目标一起搬走', () async {
       await seedDb();
       await expectLater(
         const DataRootMigrator().migrate(DataRootMigrationRequest(

@@ -62,7 +62,7 @@ Future<String?> relocateMissingAppDocumentPath(
 
   final Directory root =
       documentsRoot ?? await AppPaths.documentsRootDirectory();
-  // BUG-1111：[relative] 是相对**容器的 `Documents/`** 的，所以基准必须也是容器的
+  // BUG-1114：[relative] 是相对**容器的 `Documents/`** 的，所以基准必须也是容器的
   // `Documents/`，而不是 documents 根本身。老安装（扁平布局）两者恰好相等；新安装的
   // documents 根是 `<container>/Documents/Hibiki/data`，直接拼会把 `Hibiki/data` 拼两
   // 遍（`.../Documents/Hibiki/data/Hibiki/data/...`），重定位永远落空。

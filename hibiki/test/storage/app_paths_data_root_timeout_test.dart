@@ -23,7 +23,7 @@ void main() {
   late Directory tmp;
   late Directory fakeTemp;
 
-  /// BUG-1111：默认 documents 根 = `<平台 Documents>/Hibiki/data`。本文件 mock 的 support
+  /// BUG-1114：默认 documents 根 = `<平台 Documents>/Hibiki/data`。本文件 mock 的 support
   /// 根下没有 `hibiki.db`，故 resolve() 一律判为**全新安装** → 新布局。
   String nestedDefaultDocs() => p.joinAll(<String>[
         p.join(tmp.path, 'default_documents'),

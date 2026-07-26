@@ -22,7 +22,7 @@ enum DataRootTargetRejection {
 /// [existsAndHasFiles] 注入目录是否存在且含文件的判定（生产传真实 FS 探测，测试传
 /// 桩），保持本函数无 IO 依赖、可纯测。
 ///
-/// BUG-1111：[sharedDocumentsRoot] 为真表示 [oldDocumentsRoot] 是**共享**的平台
+/// BUG-1114：[sharedDocumentsRoot] 为真表示 [oldDocumentsRoot] 是**共享**的平台
 /// `Documents`（老安装的扁平布局）。此时迁移是白名单选择性搬移，把新根设在它下面的一个
 /// 非白名单子目录（典型：`Documents\Hibiki`，即用户把散落的 16 个目录收进自己的子目录）
 /// 是安全的，不再按 [DataRootTargetRejection.insideCurrentRoot] 一刀切拒绝。
@@ -121,7 +121,7 @@ class _DataRootWidgetState extends State<_DataRootWidget> {
     final AppModel appModel = widget.settingsContext.appModel;
     String? defaultRootPath;
     try {
-      // BUG-1111：显示 documents 根**本身**（内容真正落的地方）。旧实现显示它的父目录，
+      // BUG-1114：显示 documents 根**本身**（内容真正落的地方）。旧实现显示它的父目录，
       // 那在扁平老布局下是用户主目录（`C:\Users\<name>`，根本不是数据位置），在
       // `<Documents>/Hibiki/data` 新布局下则是导出目录 `Hibiki` —— 两种都误导。
       defaultRootPath = appModel.appDirectory.path;
@@ -151,7 +151,7 @@ class _DataRootWidgetState extends State<_DataRootWidget> {
     // 会把共享 Documents 误当专属根整树搬走）——直接与平台 Documents 实路径比对。
     // 探测失败按共享处理：宁可少搬（白名单），绝不整搬/整删共享目录。
     //
-    // BUG-1111：这个判定必须在**校验之前**拿到——共享根下的非白名单子目录
+    // BUG-1114：这个判定必须在**校验之前**拿到——共享根下的非白名单子目录
     // （`Documents\Hibiki`）是合法目标，校验要据此放行。
     bool sharedDocumentsRoot;
     try {

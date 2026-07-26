@@ -62,7 +62,7 @@ void main() {
   });
 
   test('listForShelf 把指向旧空位置的封面自愈回写到当前 video_covers 里的同名文件', () async {
-    // 当前根下有真实封面文件（迁移把它搬到这里）。BUG-1111：目录经 AppPaths 解析而不是
+    // 当前根下有真实封面文件（迁移把它搬到这里）。BUG-1114：目录经 AppPaths 解析而不是
     // 硬拼 `<Documents>/video_covers`——默认 documents 根已是 `<Documents>/Hibiki/data`，
     // 夹具必须与产品侧自愈查的目录同源，否则测的是一个产品里不存在的位置。
     final Directory coversDir = await AppPaths.videoCoversDirectory()

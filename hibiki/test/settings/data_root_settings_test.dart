@@ -108,12 +108,12 @@ void main() {
       expect(r, isNull);
     });
 
-    // BUG-1111：老安装的 documents 根就是共享的平台 `Documents`。把散落其中的 16 个
+    // BUG-1114：老安装的 documents 根就是共享的平台 `Documents`。把散落其中的 16 个
     // Hibiki 目录收进 `Documents\Hibiki` 是这批用户唯一自然的整理路径，之前被
     // insideCurrentRoot 一刀切拒绝（新根「位于」旧根内部）。共享根走白名单选择性搬移，
     // 非白名单子目录在搬移全程都是旁观者，因此必须放行。
     test(
-        'BUG-1111: nested non-whitelisted dir under the SHARED documents root '
+        'BUG-1114: nested non-whitelisted dir under the SHARED documents root '
         'is accepted', () {
       final DataRootTargetRejection? r = validateDataRootTarget(
         newDataRoot: p.join(oldDocs, 'Hibiki'),
@@ -126,7 +126,7 @@ void main() {
     });
 
     test(
-        'BUG-1111: the same nested target is still rejected for a DEDICATED '
+        'BUG-1114: the same nested target is still rejected for a DEDICATED '
         'root (whole-tree move would swallow it)', () {
       final DataRootTargetRejection? r = validateDataRootTarget(
         newDataRoot: p.join(oldDocs, 'Hibiki'),
@@ -138,7 +138,7 @@ void main() {
       expect(r, DataRootTargetRejection.insideCurrentRoot);
     });
 
-    test('BUG-1111: a whitelisted top-level dir is never an accepted target',
+    test('BUG-1114: a whitelisted top-level dir is never an accepted target',
         () {
       final DataRootTargetRejection? r = validateDataRootTarget(
         newDataRoot: p.join(oldDocs, 'audiobooks'),
@@ -150,7 +150,7 @@ void main() {
       expect(r, DataRootTargetRejection.insideCurrentRoot);
     });
 
-    test('BUG-1111: the shared root itself is still a self-migrate rejection',
+    test('BUG-1114: the shared root itself is still a self-migrate rejection',
         () {
       final DataRootTargetRejection? r = validateDataRootTarget(
         newDataRoot: oldDocs,
@@ -227,7 +227,7 @@ void main() {
           isTrue);
       // 失败切到失败态遮罩（不再立刻重启导致用户看不到失败）。
       expect(src.contains('failDataRootMigration('), isTrue);
-      // BUG-1111：共享根判定必须喂给**触发前校验**（而不是只喂给引擎），否则老安装选
+      // BUG-1114：共享根判定必须喂给**触发前校验**（而不是只喂给引擎），否则老安装选
       // `Documents\Hibiki` 会在进确认弹窗之前就被 insideCurrentRoot 拒掉。
       expect(src.contains('sharedDocumentsRoot: sharedDocumentsRoot'), isTrue);
     });

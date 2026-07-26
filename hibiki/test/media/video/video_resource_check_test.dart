@@ -109,7 +109,7 @@ void main() {
     });
 
     test(
-        'BUG-1111: repairs stale paths when the documents root is nested under '
+        'BUG-1114: repairs stale paths when the documents root is nested under '
         'the container Documents (<Documents>/Hibiki/data)', () async {
       // 新安装的 documents 根不再是容器的 `Documents` 本身，而是它下面的
       // `Hibiki/data`。旧路径里 `Documents/` 之后的相对段**已经包含** `Hibiki/data`，

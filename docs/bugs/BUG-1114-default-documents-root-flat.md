@@ -1,4 +1,4 @@
-## BUG-1111 · 默认数据根时 16 个 Hibiki 目录直接摊在用户文档根下
+## BUG-1114 · 默认数据根时 16 个 Hibiki 目录直接摊在用户文档根下
 - **报告**：2026-07-26（用户：qqbotxiaoxiao）
 - **真实性**：✅ 真 bug — 根因 `hibiki/lib/src/storage/app_paths.dart:196`（改动前）：
   `_resolveDocumentsRoot()` 在没有自定义数据根时直接 `return getApplicationDocumentsDirectory()`，

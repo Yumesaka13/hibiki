@@ -27,7 +27,7 @@ void main() {
   late Directory tmp;
   late Directory defaultDocs;
 
-  /// BUG-1111：默认 documents 根 = `<平台 Documents>/Hibiki/data`（全新安装；本文件的
+  /// BUG-1114：默认 documents 根 = `<平台 Documents>/Hibiki/data`（全新安装；本文件的
   /// mock support 根下没有 `hibiki.db`，故一律判为新装）。
   String defaultDocsRoot() => p.joinAll(<String>[
         defaultDocs.path,
@@ -102,7 +102,7 @@ void main() {
         p.equals(await AudiobookStorage.audiobooksRootDir(),
             p.join(defaultDocsRoot(), 'audiobooks')),
         isTrue);
-    // BUG-1111 的核心断言：用户文档根下不再直接出现 Hibiki 的内容目录。
+    // BUG-1114 的核心断言：用户文档根下不再直接出现 Hibiki 的内容目录。
     expect((await AppPaths.videoCoversDirectory()).path,
         isNot(equals(p.join(defaultDocs.path, 'video_covers'))));
   });

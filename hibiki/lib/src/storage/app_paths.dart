@@ -84,7 +84,7 @@ class AppPaths {
         throw DataRootUnavailableException(configuredPath: configured);
       }
     }
-    // BUG-1111：默认 documents 布局的判定**只在这里**做一次（启动期，真实异步环境）。
+    // BUG-1114：默认 documents 布局的判定**只在这里**做一次（启动期，真实异步环境）。
     // 判定要探测文件系统，绝不能塞进 [_resolveDocumentsRoot]——那条路径会被运行时的静态
     // 便捷层（`documentsSubdirectory` 等）高频调用，其中就包括 widget 测试里的封面/资源
     // 解析：`testWidgets` 跑在 FakeAsync 上，真实文件 IO 的 future 在那里永不完成、
@@ -116,7 +116,7 @@ class AppPaths {
   /// `<dataRoot>` 下「数据库/支持」子目录名。
   static const String _dataRootSupportChild = 'support';
 
-  /// BUG-1111：**默认** documents 根的布局键（SharedPreferences，与 [dataRootPrefKey]
+  /// BUG-1114：**默认** documents 根的布局键（SharedPreferences，与 [dataRootPrefKey]
   /// 同一通道，DB 打开前可读）。值只有两个：[_layoutFlat] / [_layoutNested]。
   ///
   /// 一经写入就是本机的**永久锚点**，不再重新探测：布局若随「Documents 里此刻有没有某个
@@ -240,7 +240,7 @@ class AppPaths {
     return _resolveDefaultDocumentsRoot();
   }
 
-  /// BUG-1111：无自定义数据根时的 documents 根。
+  /// BUG-1114：无自定义数据根时的 documents 根。
   ///
   /// 历史上这里直接返回平台 `Documents`，于是 [hibikiOwnedDocumentsEntries] 那 16 个目录
   /// 全摊在用户文档根下（TODO-935 E0 收敛十几处 `getApplicationDocumentsDirectory()` 时
@@ -264,7 +264,7 @@ class AppPaths {
   /// FakeAsync 的说明）：本进程已判定 → 用判定值；否则读 prefs 里的锚点；连锚点都没有 →
   /// **扁平老布局**。
   ///
-  /// 最后那个兜底是保守的一半：没有判定依据时退回 BUG-1111 之前的行为，绝不擅自把一个
+  /// 最后那个兜底是保守的一半：没有判定依据时退回 BUG-1114 之前的行为，绝不擅自把一个
   /// 可能装了满库的机器切到新布局（那会让书库、有声书、词典资源在 UI 上集体消失——文件
   /// 还在、DB 里的绝对路径也还指向旧位置，但静态派生点全去了新目录）。生产上
   /// [AppPaths.resolve] 恒在启动最早期跑完 [_ensureDocumentsLayoutDecided]，所以真正走到
@@ -357,7 +357,7 @@ class AppPaths {
   ///
   /// **老安装（[_layoutFlat]）** 的 documents 根 = 整个用户 `Documents`（共享目录，含
   /// 用户自己的文件和 shell junction）。迁移引擎对共享根**只搬这份白名单里的顶层项**，
-  /// 绝不整树搬移 / 整树删除用户 `Documents`。BUG-1111 之后新装走
+  /// 绝不整树搬移 / 整树删除用户 `Documents`。BUG-1114 之后新装走
   /// `<Documents>/Hibiki/data`（Hibiki 专属根，迁移走整树语义），白名单对它不生效——但
   /// 老安装可能永远停在扁平布局，故白名单及其守卫**长期有效**，新增
   /// `<documents>/<child>` 派生点仍必须收进来。每一项都必须对应仓库里一个真实的派生点：
@@ -405,7 +405,7 @@ class AppPaths {
     'webArchive',
   };
 
-  /// BUG-1111：[newDataRoot] 落在**共享** documents 根（老安装的扁平布局 = 平台
+  /// BUG-1114：[newDataRoot] 落在**共享** documents 根（老安装的扁平布局 = 平台
   /// `Documents`）内部时，它是否是一个安全的迁移目标。
   ///
   /// 一般规则是「新数据根不能位于旧数据目录内部」（自我嵌套 → 边搬边把目标搬进自己）。

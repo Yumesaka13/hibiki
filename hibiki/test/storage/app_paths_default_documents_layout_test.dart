@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:hibiki/src/storage/app_paths.dart';
 
-/// BUG-1111 单测：**默认**（未配置自定义数据根）documents 根的布局判定。
+/// BUG-1114 单测：**默认**（未配置自定义数据根）documents 根的布局判定。
 ///
 /// 历史行为是 documents 根 = 平台 `Documents` **本身**，于是
 /// [AppPaths.hibikiOwnedDocumentsEntries] 那 16 个目录全摊在用户文档根下。现在：
@@ -73,7 +73,7 @@ void main() {
     if (tmp.existsSync()) tmp.deleteSync(recursive: true);
   });
 
-  group('BUG-1111 默认 documents 布局判定', () {
+  group('BUG-1114 默认 documents 布局判定', () {
     test('全新安装 → <Documents>/Hibiki/data，用户文档根下不再摊开', () async {
       // 布局判定只在启动期的 resolve() 里做一次（解析路径本身不许碰文件系统）。
       final Directory root = (await AppPaths.resolve()).documentsRoot;
@@ -118,7 +118,7 @@ void main() {
 
     test('未跑过 resolve 且无 prefs 锚点 → 兜底扁平老布局（绝不擅自切走）', () async {
       // 生产上 resolve() 恒在启动最早期跑完；真正走到这个兜底的是没跑 resolve 的测试
-      // 夹具。兜底必须等于 BUG-1111 之前的行为，否则一批 widget 测试与老用户会被静默
+      // 夹具。兜底必须等于 BUG-1114 之前的行为，否则一批 widget 测试与老用户会被静默
       // 切到一个空的新根。
       final Directory root = await AppPaths.documentsRootDirectory();
 
@@ -169,7 +169,7 @@ void main() {
     });
   });
 
-  group('BUG-1111 共享 documents 根下的嵌套迁移目标', () {
+  group('BUG-1114 共享 documents 根下的嵌套迁移目标', () {
     test('非白名单子目录（Documents\\Hibiki）是安全目标', () {
       expect(
         AppPaths.isSafeNestedTargetInSharedDocuments(
