@@ -258,6 +258,47 @@ void main() {
       'HibikiDialogFrame(',
       'PopupDictionaryPage(',
     ],
+    // galgame 弹窗 MD3 收口：统一走 showAppDialog 入口（MD3 弹窗动画 + Cupertino
+    // 分支）+ 共享对话框骨架（HibikiDialogFrame + HibikiModalSheetFrame）+
+    // adaptiveDialogAction（肯定动作 FilledButton 强调），与同子系统
+    // galgame_helper_installer 的确认/进度框同一套样板；波形选区框文案改走 i18n，
+    // 游戏库筛选面板改走 adaptiveModalSheet + HibikiModalSheetFrame。
+    'lib/src/mining/galgame_waveform_select_dialog.dart': <String>[
+      'showAppDialog<GalWaveformRange>(',
+      'HibikiDialogFrame',
+      'HibikiModalSheetFrame',
+      'adaptiveDialogAction',
+      't.game_waveform_select_title',
+      't.game_waveform_range_label',
+    ],
+    'lib/src/mining/magpie_download_confirm.dart': <String>[
+      'showAppDialog<bool>(',
+      'HibikiDialogFrame',
+      'HibikiModalSheetFrame',
+      'adaptiveDialogAction',
+    ],
+    'lib/src/pages/implementations/galgame_detail_page.dart': <String>[
+      'showAppDialog<String>(',
+      'showAppDialog<SourceCandidate>(',
+      'HibikiDialogFrame',
+      'HibikiModalSheetFrame',
+      'HibikiTextField',
+      'adaptiveDialogAction',
+    ],
+    'lib/src/pages/implementations/games_library_page.dart': <String>[
+      'showAppDialog<GalgamePlayStatus>(',
+      'showAppDialog<String>(',
+      'adaptiveModalSheet<void>(',
+      'HibikiDialogFrame',
+      'HibikiModalSheetFrame',
+      'HibikiTextField',
+      'adaptiveDialogAction',
+      'AdaptiveSettingsSwitchRow',
+    ],
+    'lib/src/pages/implementations/texthooker_page.dart': <String>[
+      'showAppDialog<int>(',
+      'showAppDialog<ExternalWindowInfo>(',
+    ],
   };
 
   test('MD3 design token and shared component files exist', () {
@@ -548,6 +589,30 @@ void main() {
       'lib/src/models/app_model.dart': <String>[
         '=> Dialog(',
         'child: ConstrainedBox(',
+      ],
+      // galgame 弹窗 MD3 收口的反向锁：不再裸 showDialog / AlertDialog /
+      // 手搓 showModalBottomSheet；波形选区框不再硬编码中文文案。
+      'lib/src/mining/galgame_waveform_select_dialog.dart': <String>[
+        'showDialog<',
+        'AlertDialog(',
+        '选择音频范围',
+      ],
+      'lib/src/mining/magpie_download_confirm.dart': <String>[
+        'showDialog<',
+        'AlertDialog(',
+      ],
+      'lib/src/pages/implementations/galgame_detail_page.dart': <String>[
+        'showDialog<',
+        'AlertDialog(',
+      ],
+      'lib/src/pages/implementations/games_library_page.dart': <String>[
+        'showDialog<',
+        'AlertDialog(',
+        'showModalBottomSheet<',
+        'SwitchListTile(',
+      ],
+      'lib/src/pages/implementations/texthooker_page.dart': <String>[
+        'showDialog<',
       ],
     };
 
@@ -984,7 +1049,7 @@ void main() {
       // 「使用」按钮，以及「一并应用到合集 N 集」的内容勾选行——是视频子系统的
       // 瞬态搜索结果内容对话框，非普通页面 chrome，同 anki_mined_card_action_sheet /
       // sentence_context_dialog 的内容对话框豁免类。
-      'lib/src/media/video/cover_ui/poster_match_dialog.dart':
+      'lib/src/media/video/cover_ui/cover_match_dialog.dart':
           'Poster-scrape online-match dialog renders candidate poster rows as '
               'search-result content (portrait thumbnail clip + confidence '
               'badge + broken-image fallback surface + an "apply to N collection '
@@ -1472,14 +1537,13 @@ void main() {
     expect(audiobookBuild, isNot(contains('adaptiveAlertDialog(')));
     expect(removeDialog, isNot(contains('adaptiveAlertDialog(')));
 
-    // 导入对话框外框 chrome 已收敛到共享 ImportDialogFrame（清理 wave2）：
-    // 两侧 Frame 断言走委托，共享件内再断言真实 chrome，MD3 保证传递闭环
-    // （参照 BatchTagPickerDialogFrame 先例）。RemoveConfirmation 仍直持 chrome。
-    final String sharedImportFrame = _sectionSource(
-      bookImportSource,
-      'class ImportDialogFrame',
-      'class BookImportDialogFrame',
-    );
+    // 导入对话框外框 chrome 已收敛到共享 ImportDialogFrame（清理 wave2；审计
+    // §1-K 后迁到 media/import/ 共享目录）：两侧 Frame 断言走委托，共享件内再
+    // 断言真实 chrome，MD3 保证传递闭环（参照 BatchTagPickerDialogFrame 先例）。
+    // RemoveConfirmation 仍直持 chrome。
+    final String sharedImportFrame = File(
+      'lib/src/media/import/import_dialog_frame.dart',
+    ).readAsStringSync();
     expect(bookImportFrame, contains('return ImportDialogFrame('));
     expect(audiobookFrame, contains('return ImportDialogFrame('));
     expect(sharedImportFrame, contains('HibikiDialogFrame('));
@@ -1551,10 +1615,10 @@ void main() {
     );
 
     // 导入中 spinner 按钮（含 tokens.surfaces.primary 的进度指示）已收敛到
-    // import_dialog_progress_mixin.buildImportAction：两侧 flow 断言委托，
+    // import_flow_mixin.buildImportAction：两侧 flow 断言委托，
     // mixin 体内再断言真实 token，保证传递闭环。
     final String progressMixinSource = File(
-      'lib/src/media/audiobook/import_dialog_progress_mixin.dart',
+      'lib/src/media/import/import_flow_mixin.dart',
     ).readAsStringSync();
     final String importActionBody = _functionSource(
       progressMixinSource,
